@@ -7,7 +7,7 @@
   <version>1.0-SNAPSHOT</version>
   <name>XD2Hand</name>
 
-  <url>http://maven.apache.org</url>
+  <url>http://luoyu.site</url>
   <properties>
     <spring.version>4.1.1.RELEASE</spring.version>
     <hibernate.version>4.3.8.Final</hibernate.version>
@@ -72,6 +72,12 @@
       <version>${hibernate.version}</version>
     </dependency>
 
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-entitymanager</artifactId>
+      <version>${hibernate.version}</version>
+    </dependency>
+
     <!-- mysql连接 -->
     <dependency>
       <groupId>mysql</groupId>
@@ -86,8 +92,8 @@
       <version>0.9.1.2</version>
     </dependency>
 
-<!--可以忽略-->
-    <!-- 二级缓存ehcache -->
+    <!--可以忽略-->
+    <!-- 二级缓存ehcache 具体用法还需要 -->
     <dependency>
       <groupId>net.sf.ehcache</groupId>
       <artifactId>ehcache</artifactId>
@@ -100,7 +106,6 @@
       <artifactId>aspectjweaver</artifactId>
       <version>1.8.4</version>
     </dependency>
-
 
     <!--Json格式依赖-->
     <dependency>
@@ -160,10 +165,18 @@
     </dependency>
     <!--日志依赖-->
     <dependency>
-      <groupId>log4j</groupId>
-      <artifactId>log4j</artifactId>
-      <version>1.2.17</version>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-core</artifactId>
+      <version>2.5</version>
     </dependency>
+
+    <!-- 先只用spring的依赖注入，暂时不引入第三方 -->
+    <!--<dependency>-->
+      <!--<groupId>org.sonatype.sisu</groupId>-->
+      <!--<artifactId>sisu-inject-bean</artifactId>-->
+      <!--<version>2.3.0</version>-->
+      <!--<scope>test</scope>-->
+    <!--</dependency>-->
 
   </dependencies>
 

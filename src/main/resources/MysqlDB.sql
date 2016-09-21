@@ -6,7 +6,7 @@ USE BookStore;
 # 创建用户表
 CREATE TABLE IF NOT EXISTS user_student(
 #   用户账号ID
-  Id int PRIMARY KEY ,
+  Id int PRIMARY KEY AUTO_INCREMENT,
 #   用户姓名
   name VARCHAR(100),
 #   昵称
@@ -27,9 +27,11 @@ CREATE TABLE IF NOT EXISTS user_student(
 #  这里有个难点是如何进行分类标识？而且我们有两种分类法方法
 CREATE TABLE IF NOT EXISTS books(
 #   图书id
-  id INT PRIMARY KEY ,
+  id INT PRIMARY KEY AUTO_INCREMENT,
 #   发布者的id
   user_id int,
+#   图书名称
+  name VARCHAR(100),
 #   图书 isbn编号
   isbn VARCHAR(50) NOT NULL ,
 #   旧书的图片 需要对个数进行限制。存放的是路径
@@ -40,7 +42,7 @@ CREATE TABLE IF NOT EXISTS books(
 #   推荐星级 5代表五星推荐
   recommendStar int,
 #   图书发布时间
-  publish_data DATE,
+  publish_date DATE,
 #   图书分类编码 通用分类
   typeCode_books VARCHAR(20),
 #   定制化分了 按照班级分类
@@ -50,7 +52,7 @@ CREATE TABLE IF NOT EXISTS books(
 -- 图书评论表
 CREATE TABLE IF NOT EXISTS bookComment(
 #   评论id
-  id INT PRIMARY KEY ,
+  id INT PRIMARY KEY AUTO_INCREMENT,
 #   isbn 用isbn来对图书进行分类
   isbn VARCHAR(50),
 #   发表评论用户id

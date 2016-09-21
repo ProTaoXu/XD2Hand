@@ -10,6 +10,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class User {
     private String name;
+    private String nickname;
+    private String phoneNumber;
+    private String email;
+    private String classes;
+    private byte[] portrait;
     private String passwd;
 
     public String getName() {
@@ -18,6 +23,46 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getClasses() {
+        return classes;
+    }
+
+    public void setClasses(String classes) {
+        this.classes = classes;
+    }
+
+    public byte[] getPortrait() {
+        return portrait;
+    }
+
+    public void setPortrait(byte[] portrait) {
+        this.portrait = portrait;
     }
 
     public String getPasswd() {
