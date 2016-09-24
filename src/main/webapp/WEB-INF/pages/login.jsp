@@ -19,6 +19,6 @@
       <form:input path="user.passwd" id="user-password-label" name="userPasswd" />
       <input type="submit" value="登陆" name="Submit"/>
     </form>
-    <button onclick="window.location.href=''" value="注册">注册</button>
+    <button onclick="window.location.href='userManage/registerPage'" value="注册">注册</button>
 </body>
 </html>
