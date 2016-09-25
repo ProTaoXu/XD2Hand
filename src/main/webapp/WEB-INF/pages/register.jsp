@@ -1,4 +1,4 @@
-<%@ taglib prefix="jstl" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%--
   Created by IntelliJ IDEA.
   User: xd
@@ -6,14 +6,16 @@
   Time: 22:31
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <html>
 <head>
     <title>用户注册</title>
 </head>
 <body>
-  <jstl:form action="userManager/">
-
-  </jstl:form>
+  <form action="register" method="post">
+    姓名：<form:input path="user.name"/><br/>
+    密码: <form:password path="user.passwd"/>
+    <input type="submit" value="注册">
+  </form>
 </body>
 </html>

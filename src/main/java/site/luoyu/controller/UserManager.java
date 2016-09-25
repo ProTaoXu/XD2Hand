@@ -21,9 +21,6 @@ public class UserManager {
 
     private static final Logger log = LogManager.getLogger(UserManager.class);
 
-//    @Autowired
-//    private BooksRepository booksRepository;
-
     @Autowired
     private UserService userService;
 
@@ -68,6 +65,7 @@ public class UserManager {
     /**
      * 编辑个人信息
      */
+    //todo 编辑个人信息服务 郭旭
     @RequestMapping("/editInfo")
     public void editInfo(@Validated User user){
     }
