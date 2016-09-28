@@ -6,6 +6,7 @@ import site.luoyu.dao.UserStudent;
 import site.luoyu.dao.UserStudentRepository;
 import site.luoyu.model.User;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 /**
@@ -42,9 +43,16 @@ public class UserService {
      *      学生
      * @return 是否成功
      */
-    public boolean register(User user){
+    //todo bug 保存的时候竟然只保存一个
+    public boolean register(User user) {
         UserStudent userStudent = new UserStudent();
-        userStudent.setName(user.getName());
+        String encode = null;
+        try {
+            encode = new String(user.getName().getBytes("iso8859-1"),"UTF8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        userStudent.setName(encode);
         userStudent.setPasswd(user.getPasswd());
         userStudentRepository.save(userStudent);
         return true;

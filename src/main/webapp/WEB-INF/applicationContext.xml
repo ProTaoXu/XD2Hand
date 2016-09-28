@@ -27,15 +27,23 @@
        </jpa:repositories>
 
        <!-- 数据库连接参数配置文件的位置 resources MySql.properties -->
-       <context:property-placeholder location="classpath:MySql.properties" ignore-unresolvable="true" />
+       <!--<context:property-placeholder location="classpath:MySql.properties" ignore-unresolvable="true" />-->
+       <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+              <property name="locations">
+                     <list>
+                            <value>classpath*:MySql.properties</value>
+                            <value>classpath*:ProjectConfig.properties</value>
+                     </list>
+              </property>
+       </bean>
+
        <!-- service包 -->
        <!--<context:component-scan base-package="your service package" />-->
        <!-- 使用cglib进行动态代理 我对cglib用的也不多，不知道这个是个啥-->
        <aop:aspectj-autoproxy proxy-target-class="true" />
        <!-- 支持注解方式声明式事务 -->
        <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" />
-       <!-- dao接口实现的位置 -->
-       <jpa:repositories base-package="site.luoyu.dao" repository-impl-postfix="Impl" entity-manager-factory-ref="entityManagerFactory" transaction-manager-ref="transactionManager" />
+
        <!-- 实体管理器 -->
        <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
               <property name="dataSource" ref="dataSource" />

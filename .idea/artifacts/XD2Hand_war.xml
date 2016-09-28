@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="XD2Hand:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="XD2Hand.war">
+      <element id="artifact" artifact-name="XD2Hand:war exploded" />
+    </root>
+  </artifact>
+</component>

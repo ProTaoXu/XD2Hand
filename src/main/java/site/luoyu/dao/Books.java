@@ -7,49 +7,40 @@ import javax.persistence.Id;
 import java.sql.Date;
 
 /**
- * Created by xd on 2016/9/20.
+ * Created by xd on 2016/9/26.
  */
 @Entity
 public class Books {
-    private int id;
-    private Integer userId;
-    private String name;
+    private int bookId;
+    private Integer stuId;
     private String isbn;
     private String pictures;
     private Integer level;
     private Integer recommendStar;
     private Date publishDate;
-    private String typeCodeBooks;
+    private Integer bookTypeId;
     private String typeCodeClass;
+    private Float price;
+    private String name;
 
     @Id
-    @Column(name = "id")
-    public int getId() {
-        return id;
+    @Column(name = "Book_id")
+    public int getBookId() {
+        return bookId;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    @Basic
-    @Column(name = "user_id")
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setBookId(int bookId) {
+        this.bookId = bookId;
     }
 
     @Basic
-    @Column(name = "name")
-    public String getName() {
-        return name;
+    @Column(name = "Stu_id")
+    public Integer getStuId() {
+        return stuId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setStuId(Integer stuId) {
+        this.stuId = stuId;
     }
 
     @Basic
@@ -103,13 +94,13 @@ public class Books {
     }
 
     @Basic
-    @Column(name = "typeCode_books")
-    public String getTypeCodeBooks() {
-        return typeCodeBooks;
+    @Column(name = "BookTypeId")
+    public Integer getBookTypeId() {
+        return bookTypeId;
     }
 
-    public void setTypeCodeBooks(String typeCodeBooks) {
-        this.typeCodeBooks = typeCodeBooks;
+    public void setBookTypeId(Integer bookTypeId) {
+        this.bookTypeId = bookTypeId;
     }
 
     @Basic
@@ -122,6 +113,26 @@ public class Books {
         this.typeCodeClass = typeCodeClass;
     }
 
+    @Basic
+    @Column(name = "price")
+    public Float getPrice() {
+        return price;
+    }
+
+    public void setPrice(Float price) {
+        this.price = price;
+    }
+
+    @Basic
+    @Column(name = "name")
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -129,35 +140,36 @@ public class Books {
 
         Books books = (Books) o;
 
-        if (id != books.id) return false;
+        if (bookId != books.bookId) return false;
+        if (bookTypeId != null ? !bookTypeId.equals(books.bookTypeId) : books.bookTypeId != null) return false;
         if (isbn != null ? !isbn.equals(books.isbn) : books.isbn != null) return false;
         if (level != null ? !level.equals(books.level) : books.level != null) return false;
         if (name != null ? !name.equals(books.name) : books.name != null) return false;
         if (pictures != null ? !pictures.equals(books.pictures) : books.pictures != null) return false;
+        if (price != null ? !price.equals(books.price) : books.price != null) return false;
         if (publishDate != null ? !publishDate.equals(books.publishDate) : books.publishDate != null) return false;
         if (recommendStar != null ? !recommendStar.equals(books.recommendStar) : books.recommendStar != null)
             return false;
-        if (typeCodeBooks != null ? !typeCodeBooks.equals(books.typeCodeBooks) : books.typeCodeBooks != null)
-            return false;
+        if (stuId != null ? !stuId.equals(books.stuId) : books.stuId != null) return false;
         if (typeCodeClass != null ? !typeCodeClass.equals(books.typeCodeClass) : books.typeCodeClass != null)
             return false;
-        if (userId != null ? !userId.equals(books.userId) : books.userId != null) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = id;
-        result = 31 * result + (userId != null ? userId.hashCode() : 0);
-        result = 31 * result + (name != null ? name.hashCode() : 0);
+        int result = bookId;
+        result = 31 * result + (stuId != null ? stuId.hashCode() : 0);
         result = 31 * result + (isbn != null ? isbn.hashCode() : 0);
         result = 31 * result + (pictures != null ? pictures.hashCode() : 0);
         result = 31 * result + (level != null ? level.hashCode() : 0);
         result = 31 * result + (recommendStar != null ? recommendStar.hashCode() : 0);
         result = 31 * result + (publishDate != null ? publishDate.hashCode() : 0);
-        result = 31 * result + (typeCodeBooks != null ? typeCodeBooks.hashCode() : 0);
+        result = 31 * result + (bookTypeId != null ? bookTypeId.hashCode() : 0);
         result = 31 * result + (typeCodeClass != null ? typeCodeClass.hashCode() : 0);
+        result = 31 * result + (price != null ? price.hashCode() : 0);
+        result = 31 * result + (name != null ? name.hashCode() : 0);
         return result;
     }
 }

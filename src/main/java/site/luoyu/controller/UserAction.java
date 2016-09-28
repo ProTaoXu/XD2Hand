@@ -1,7 +1,14 @@
 package site.luoyu.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
+import site.luoyu.model.Book;
+import site.luoyu.model.User;
+import site.luoyu.service.BooksService;
+
+import javax.servlet.http.HttpSession;
 
 /**
  * 这个用来实现用户的行为，例如发布图书，浏览图书。查看图书详情等。
@@ -11,12 +18,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/userAction")
 public class UserAction {
 
+    private static final org.apache.logging.log4j.Logger log = org.apache.logging.log4j.LogManager.getLogger(UserAction.class);
+
+    @Autowired
+    private BooksService booksService;
+
     /**
      * 发布用户图书
      */
+    //todo 这里细作的话需要支持多本书同时发布，我现在只是发不完一本后跳转到发布页面，这样不太好
+    //todo 临时不支持图片上传功能
     @RequestMapping("/publishBook")
-    public void publishBookSale(){
-        System.out.print("发布图书销售信息：这里需要组合books表的持久化");
+    public void publishBookSale(@Validated Book book ,HttpSession session){
+        log.info("发布图书销售信息 图书名称: "+ book.getName());
+        User user = (User) session.getAttribute("user");
+        booksService.publishBook(book,user);
     }
 
     /**

@@ -9,6 +9,8 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class User {
+
+    private int stuId;
     private String name;
     private String nickname;
     private String phoneNumber;
@@ -71,5 +73,13 @@ public class User {
 
     public void setPasswd(String passwd) {
         this.passwd = passwd;
+    }
+
+    public int getStuId() {
+        return stuId;
+    }
+
+    public void setStuId(int stuId) {
+        this.stuId = stuId;
     }
 }

@@ -4,12 +4,12 @@ import javax.persistence.*;
 import java.util.Arrays;
 
 /**
- * Created by xd on 2016/9/17.
+ * Created by xd on 2016/9/26.
  */
 @Entity
 @Table(name = "user_student", schema = "", catalog = "bookstore")
 public class UserStudent {
-    private int id;
+    private int stuId;
     private String name;
     private String nickname;
     private String phoneNumber;
@@ -19,13 +19,13 @@ public class UserStudent {
     private String passwd;
 
     @Id
-    @Column(name = "Id")
-    public int getId() {
-        return id;
+    @Column(name = "Stu_id")
+    public int getStuId() {
+        return stuId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setStuId(int stuId) {
+        this.stuId = stuId;
     }
 
     @Basic
@@ -105,7 +105,7 @@ public class UserStudent {
 
         UserStudent that = (UserStudent) o;
 
-        if (id != that.id) return false;
+        if (stuId != that.stuId) return false;
         if (classes != null ? !classes.equals(that.classes) : that.classes != null) return false;
         if (email != null ? !email.equals(that.email) : that.email != null) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
@@ -119,7 +119,7 @@ public class UserStudent {
 
     @Override
     public int hashCode() {
-        int result = id;
+        int result = stuId;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (nickname != null ? nickname.hashCode() : 0);
         result = 31 * result + (phoneNumber != null ? phoneNumber.hashCode() : 0);

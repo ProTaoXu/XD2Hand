@@ -3,7 +3,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.web.WebAppConfiguration;
 import site.luoyu.dao.Books;
 import site.luoyu.dao.BooksRepository;
@@ -33,16 +32,13 @@ public class testJPA {
         user.setName("rightConfig");
         log.info(user.getName());
         Books aBook = new Books();
-        aBook.setIsbn("isbn:123");
         aBook.setLevel(10);
         aBook.setName("C++ Primier");
         Date date = new Date(System.currentTimeMillis());
         log.info(date);
         aBook.setPublishDate(date);
         aBook.setRecommendStar(5);
-        aBook.setTypeCodeBooks("计算机");
         aBook.setTypeCodeClass("031114班");
-        aBook.setUserId(1);
         booksRepository.save(aBook);
         log.info(booksRepository.findAll());
     }
