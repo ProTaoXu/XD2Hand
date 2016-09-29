@@ -11,6 +11,7 @@ public class Book {
     private String isbn;
     private String pictures;
     private Integer level;
+    //todo 推荐等级，这个可以让服务器在每晚12点求得最新值
     private Integer recommendStar;
     private Date publishDate;
     private Integer bookTypeId;

@@ -30,7 +30,7 @@
       <li><a href="#">SHOP</a></li>
       <li><a href="#">FAQ</a></li>
       <li><a href="#">CONTACT</a></li>
-      <li><a href="/userAction/publishBookPage">UploadBook</a></li>
+      <li><a href="/userAction/publishBookPage">UPLOADBOOK</a></li>
     </ul>
   </nav>
 </header>
