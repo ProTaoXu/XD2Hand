@@ -2,6 +2,7 @@ package site.luoyu.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import site.luoyu.model.Book;
@@ -22,6 +23,19 @@ public class UserAction {
 
     @Autowired
     private BooksService booksService;
+
+    /**
+     * 返回发布图书页面
+     * @param model
+     * @return
+     *      上传图书页面
+     */
+    @RequestMapping("/publishBookPage")
+    public String getPublishBookPage(Model model){
+        Book book = new Book();
+        model.addAttribute("book",book);
+        return "uploadBooks";
+    }
 
     /**
      * 发布用户图书

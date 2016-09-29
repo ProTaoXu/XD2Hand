@@ -27,6 +27,18 @@ public class UserManager {
     private UserService userService;
 
     /**
+     * 返回登录页面
+     * @param model
+     * @return
+     */
+    @RequestMapping("/loginPage")
+    public String getLoginPage(Model model){
+        User user = new User();
+        model.addAttribute("user",user);
+        return "login";
+    }
+
+    /**
      * 注册 返回注册页面
      */
     @RequestMapping("/registerPage")

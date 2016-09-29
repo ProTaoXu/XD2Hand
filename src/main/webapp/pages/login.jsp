@@ -21,7 +21,7 @@
 </div>
 <div>
     <img class="img" src="/images/photo-1424115087662-5845efc6b366.jpg?raw=true" alt="" />
-    <form action="userManage/login" method="post">
+    <form id="loginForm" action="/userManage/login" method="post">
         <div class="login-form">
             <form:input path="user.name" id="user-name-label" name="userName" type="text" placeholder="Account Name" /><br>
             <form:input  path="user.passwd" id="user-password-label" name="userPasswd" type="password" placeholder="Password" /><br>
@@ -29,7 +29,7 @@
             <label for="" class="label">
                 <input type="checkbox" />
                 Remember Me</label><br><br>
-            <input type="button" onclick="$('#register').submit" value="Login" class="login-button" />
+            <input type="button" onclick="$('#loginForm').submit()" value="Login" class="login-button" />
             <input type="button" onclick="window.location.href='userManage/registerPage'" value="Sign in" class="login-button" />
             <br>
             <h6 class="no-access">Can't access your account?</h6>
