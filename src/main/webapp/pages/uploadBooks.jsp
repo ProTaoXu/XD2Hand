@@ -41,7 +41,7 @@
       <div class="number">
         <div class="numberSpan">
           <div class="icon icon1">
-            <img src="/images/icons/积分.png" alt="" />
+            <img src="/images/icons/accumulation_score.png" alt="" />
           </div>
           <span class="span1">TOTAL SALES</span>
           <p>$65.8</p>
@@ -49,7 +49,7 @@
 
         <div class="numberSpan">
           <div class="icon icon2">
-            <img src="/images/icons/积分.png" alt="" />
+            <img src="/images/icons/accumulation_score.png" alt="" />
           </div>
           <span class="span2">NEW QUOTE</span>
           <p>$65.8</p>
@@ -57,7 +57,7 @@
 
         <div class="numberSpan">
           <div class="icon icon3">
-            <img src="/images/icons/积分.png" alt="" />
+            <img src="/images/icons/accumulation_score.png" alt="" />
           </div>
           <span class="span3">ORDERS</span>
           <p>$65.8</p>
@@ -65,7 +65,7 @@
 
         <div class="numberSpan">
           <div class="icon icon4">
-            <img src="/images/icons/积分.png" alt="" />
+            <img src="/images/icons/accumulation_score.png" alt="" />
           </div>
           <span class="span4">PROUUCTS</span>
           <p>$65.8</p>
