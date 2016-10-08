@@ -19,6 +19,8 @@ public class ServiceFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         response.addHeader("Access-Control-Allow-Origin", "*");
         response.addHeader("Access-Control-Allow-Headers", "X-Requested-With");
+        request.setCharacterEncoding("utf8");
+        response.setCharacterEncoding("utf8");
         chain.doFilter(request,response);
     }
 

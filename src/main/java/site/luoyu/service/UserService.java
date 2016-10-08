@@ -1,7 +1,13 @@
 package site.luoyu.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import site.luoyu.dao.UserStudent;
+import site.luoyu.dao.UserStudentRepository;
 import site.luoyu.model.User;
+
+import java.io.UnsupportedEncodingException;
+import java.util.List;
 
 /**
  * Created by xd on 2016/9/19.
@@ -13,23 +19,46 @@ import site.luoyu.model.User;
 //    每次都会遇到这个问题，直接封装好的entity 不能直接放到前台。但是又不知道怎么封装，这是一个临时办法。
 @Service
 public class UserService {
+
+    @Autowired
+    private UserStudentRepository userStudentRepository;
+
     /**
      * 用户登录
-     * @param userName
-     *      用户姓名
-     * @param passwd
-     *      用户的密码
+     * @param user
+     *      传入想要登录操作的用户
      */
-    public void login(String userName,String passwd){
+    //todo 登录操作通过名称来标识，没有处理重名的问题
+    public User login(User user){
+        List<UserStudent> userList =  userStudentRepository.findByName(user.getName());
+        for (UserStudent one : userList){
+            if (one.getPasswd().equals(user.getPasswd())){
+                User result = new User(one);
+                return result;
+            }
+        }
+        return null;
     }
 
     /**
      * 用户注册服务
      * @param user
      *      学生
-     * 注册服务
+     * @return 是否成功
      */
-    public void register(User user){
+    //todo bug 保存的时候竟然只保存一个
+    public boolean register(User user) {
+        UserStudent userStudent = new UserStudent();
+        String encode = null;
+        try {
+            encode = new String(user.getName().getBytes("iso8859-1"),"UTF8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        userStudent.setName(encode);
+        userStudent.setPasswd(user.getPasswd());
+        userStudentRepository.save(userStudent);
+        return true;
     }
 
     /**

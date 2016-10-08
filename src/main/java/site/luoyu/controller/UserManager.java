@@ -7,13 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
-import site.luoyu.dao.Books;
-import site.luoyu.dao.BooksRepository;
 import site.luoyu.model.User;
 import site.luoyu.service.UserService;
 
-import java.sql.Date;
-import java.util.Iterator;
+import javax.servlet.http.HttpSession;
 
 /**
  * Created by 张洋 on 2016/9/14.
@@ -27,56 +24,79 @@ public class UserManager {
     private static final Logger log = LogManager.getLogger(UserManager.class);
 
     @Autowired
-    private BooksRepository booksRepository;
-
-    @Autowired
     private UserService userService;
+
+    /**
+     * 返回登录页面
+     * @param model
+     * @return
+     */
+    @RequestMapping("/loginPage")
+    public String getLoginPage(Model model){
+        User user = new User();
+        model.addAttribute("user",user);
+        return "login";
+    }
 
     /**
      * 注册 返回注册页面
      */
-    @RequestMapping("/register")
-    public String register(Model model){
+    @RequestMapping("/registerPage")
+    public String getRegisterPage(Model model){
+        log.info("进入注册页面");
         User userRegister = new User();
         model.addAttribute("user",userRegister);
-        return "register";
+        return "/register";
+    }
+
+    /**
+     * 用户填好信息后将信息回传保存
+     * @param user
+     *      用户的信息
+     * @return
+     *      返回注册成功的页面
+     */
+    //todo 注册乱码问题
+    @RequestMapping("/register")
+    public String register(@Validated User user,Model model){
+        log.info("确认注册");
+        model.addAttribute("user",user);
+        if(userService.register(user))return "MainPage";
+        else return "register";
     }
 
     /**
      * 登陆
      */
     @RequestMapping("/login")
-    public String login(@Validated User user){
-
-        Books aBook = new Books();
-        aBook.setIsbn("isbn:123");
-        aBook.setLevel(10);
-        aBook.setName("C++ Primier");
-        Date date = new Date(System.currentTimeMillis());
-        aBook.setPublishDate(date);
-        aBook.setRecommendStar(5);
-        aBook.setTypeCodeBooks("计算机");
-        aBook.setTypeCodeClass("031114班");
-        aBook.setUserId(1);
-        booksRepository.save(aBook);
-        Iterable<Books> booksList = booksRepository.findAll();
-        for (Iterator it = booksList.iterator();it.hasNext();){
-            Books singleBook = (Books) it.next();
-            log.info(singleBook.getTypeCodeBooks());
-        }
-        System.out.println("用户登陆密码判断");
-
-
-        if(user.getPasswd().equals("admin")){
-            return "MainPage";
+    public String login(@Validated User user,Model model,HttpSession session){
+        log.info("用户登陆");
+        User loginUser = userService.login(user);
+        if(loginUser != null){
+            model.addAttribute("user",loginUser);
+            //将user注入session 保持持久登陆
+            session.setAttribute("user",loginUser);
+            return "redirect:/userAction/MainPage";
         }else {
+            model.addAttribute("message","用户登录失败");
             return "redirect:/";
         }
+    }
+
+    @RequestMapping("/logout")
+    public String logout(HttpSession session){
+        log.info("删除用户信息并退出登陆状态");
+        //清除用户在session中的信息
+        session.invalidate();
+        return "login";
     }
 
     /**
      * 编辑个人信息
      */
+    //todo 编辑个人信息服务 郭旭
     @RequestMapping("/editInfo")
-    public void editInfo(){}
+    public void editInfo(@Validated User user){
+        log.info("编辑个人信息");
+    }
 }
