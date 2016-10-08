@@ -10,6 +10,8 @@ import site.luoyu.model.Book;
 import site.luoyu.model.User;
 
 import java.sql.Date;
+import java.util.Map;
+import java.util.UUID;
 
 
 /**
@@ -35,19 +37,28 @@ public class BooksService {
 
     /**
      * 二手图书发布
-     * @param book
-     *     想要发布的图书
+     * @param bookParameter
+     *     客户端传过来的图书参数
+     * @param fileMap
+     *      用户上传的图书图片
      * @param user
      *     发布图书人的信息
      */
-    public void publishBook(Book book,User user){
-        log.info("图书发布持久化 书名: "+book.getName());
+    public void publishBook(Map bookParameter, Map fileMap, User user) {
+
+
         Books aBook = new Books();
-        aBook.setLevel(book.getLevel());
-        aBook.setName(book.getName());
-        aBook.setPrice(book.getPrice());
         aBook.setStuId(user.getStuId());
         aBook.setPublishDate(new Date(System.currentTimeMillis()));
+        // id 自增
+//        book.setBookId(UUID.randomUUID().);
+        aBook.setName(((String[]) bookParameter.get("name"))[0]);
+        aBook.setIsbn(((String[]) bookParameter.get("isbn"))[0]);
+        aBook.setLevel(Integer.parseInt(((String[]) bookParameter.get("level"))[0]));
+        aBook.setPrice(Float.parseFloat(((String[]) bookParameter.get("price"))[0]));
+        //todo 临时设置成1 我们需要开发后台的管理页面，动态的是实现前面用户选的类型可增改。这个类型最好也是从isbn上获得
+        aBook.setBookTypeId(1);
+        log.info("图书发布持久化 书名: " + aBook.getName());
         booksRepository.save(aBook);
     }
 }

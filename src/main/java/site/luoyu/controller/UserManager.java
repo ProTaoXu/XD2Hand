@@ -71,12 +71,14 @@ public class UserManager {
     @RequestMapping("/login")
     public String login(@Validated User user,Model model,HttpSession session){
         log.info("用户登陆");
-        if(user.getPasswd().equals("admin") || userService.login(user)){
-            model.addAttribute("user",user);
+        User loginUser = userService.login(user);
+        if(loginUser != null){
+            model.addAttribute("user",loginUser);
             //将user注入session 保持持久登陆
-            session.setAttribute("user",user);
-            return "MainPage";
+            session.setAttribute("user",loginUser);
+            return "redirect:/userAction/MainPage";
         }else {
+            model.addAttribute("message","用户登录失败");
             return "redirect:/";
         }
     }

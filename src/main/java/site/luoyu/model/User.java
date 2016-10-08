@@ -1,6 +1,7 @@
 package site.luoyu.model;
 
 import org.springframework.stereotype.Component;
+import site.luoyu.dao.UserStudent;
 
 /**
  * 这里定义的是和用户相关的信息。
@@ -18,6 +19,26 @@ public class User {
     private String classes;
     private byte[] portrait;
     private String passwd;
+
+    //无参构造函数
+    public User() {
+    }
+
+    /**
+     * 从entity构造
+     * @param stu
+     *      传过来的stu实体
+     */
+    public User(UserStudent stu) {
+        this.stuId = stu.getStuId();
+        this.name = stu.getName();
+        this.nickname = stu.getNickname();
+        this.phoneNumber = stu.getPhoneNumber();
+        this.email = stu.getEmail();
+        this.classes = stu.getClasses();
+        this.portrait = stu.getPortrait();
+        this.passwd = stu.getPasswd();
+    }
 
     public String getName() {
         return name;

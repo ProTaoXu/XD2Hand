@@ -1,10 +1,14 @@
 package site.luoyu.model;
 
+import org.springframework.stereotype.Component;
+import site.luoyu.dao.Books;
+
 import java.sql.Date;
 
 /**
  * Created by xd on 2016/9/26.
  */
+@Component
 public class Book {
     private int bookId;
     private Integer stuId;
@@ -18,6 +22,28 @@ public class Book {
     private String typeCodeClass;
     private Float price;
     private String name;
+
+    /**
+     * 无参数构造函数
+     */
+    public Book() {
+    }
+
+    //从entity直接构造
+    public Book(Books book){
+        this.bookId = book.getBookId();
+        this.stuId = book.getStuId();
+        this.isbn = book.getIsbn();
+        this.pictures = book.getPictures();
+        this.level = book.getLevel();
+        this.recommendStar = book.getRecommendStar();
+        this.publishDate = book.getPublishDate();
+        this.bookTypeId = book.getBookTypeId();
+        this.typeCodeClass = book.getTypeCodeClass();
+        this.price = book.getPrice();
+        this.name = book.getName();
+    }
+
 
     public String getIsbn() {
         return isbn;
