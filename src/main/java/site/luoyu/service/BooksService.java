@@ -4,14 +4,17 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+
 import site.luoyu.dao.Books;
 import site.luoyu.dao.BooksRepository;
-import site.luoyu.model.Book;
 import site.luoyu.model.User;
 
+
 import java.sql.Date;
+import java.util.List;
 import java.util.Map;
-import java.util.UUID;
+
 
 
 /**
@@ -44,7 +47,7 @@ public class BooksService {
      * @param user
      *     发布图书人的信息
      */
-    public void publishBook(Map bookParameter, Map fileMap, User user) {
+    public void publishBook(Map bookParameter,List<String> path, User user) {
 
 
         Books aBook = new Books();
@@ -57,8 +60,20 @@ public class BooksService {
         aBook.setLevel(Integer.parseInt(((String[]) bookParameter.get("level"))[0]));
         aBook.setPrice(Float.parseFloat(((String[]) bookParameter.get("price"))[0]));
         //todo 临时设置成1 我们需要开发后台的管理页面，动态的是实现前面用户选的类型可增改。这个类型最好也是从isbn上获得
+        //存储图片
+        aBook.setPictures(path.get(0));
+        //  
         aBook.setBookTypeId(1);
         log.info("图书发布持久化 书名: " + aBook.getName());
         booksRepository.save(aBook);
     }
+    
+    /*
+     * 在主页面列出所有书籍
+     */
+    public Iterable<Books> BooksList() {
+    	Iterable<Books> bookList = booksRepository.findAll();
+    	
+		return bookList;
+	}
 }
