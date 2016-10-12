@@ -68,43 +68,16 @@ public class UserAction {
         Map BookParameter = multipartHttpServletRequest.getParameterMap();
         
         //在数据库中存放所上传图片的路径信息
-        List<String> path = new ArrayList<>();
-        
-      
-        
+        List<String> path = null;       
         
         log.info("用户 发布图书销售信息 ");
         User user = (User) session.getAttribute("user");
         // todo 用户还没有登录，不能发布图书。这里处理的不好，最好是能登录后回到当前页面继续工作
         if(user == null)return "redirect:/userManage/loginPage";
         else {
-        	 /*
-             * 上传文件
-             */
-            //===============================================
-              String ctxPath = request.getSession().getServletContext().getRealPath("/")+"\\"+"uploadImages\\";
-              File file = new File(ctxPath);
-              if(!file.exists()){
-            	  file.mkdir();
-              }
-              String fileName = null;
-              for(Map.Entry<String, MultipartFile> entity : fileMap.entrySet()){
-            	  //获得上传文件名
-            	  MultipartFile mf = entity.getValue();
-            	  fileName = mf.getOriginalFilename();
-            	  String filePath = ctxPath + "-" +user.getStuId()+"_" + System.currentTimeMillis() + fileName;
-            	  File uploadFile = new File(filePath);
-            	  FileCopyUtils.copy(mf.getBytes(), uploadFile);
-            	  System.out.println("success");  
-            	  path.add(filePath);
-            	
-              }
-            }
-      
-        
-            
-            //===============================================
-        	
+        	//上传图片封面，并将路径信息保存到数据库
+        	 path = booksService.uploadCover(request, user, fileMap); 
+            }	
             booksService.publishBook(BookParameter,path,user);
             return "redirect:/userAction/MainPage";
         }

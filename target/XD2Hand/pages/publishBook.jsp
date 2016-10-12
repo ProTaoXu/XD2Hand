@@ -11,7 +11,7 @@
     <title>发布二手书</title>
 </head>
 <body>
-  <form action="/userAction/publishBook" method="post">
+  <form action="/XD2Hand/userAction/publishBook" method="post">
     书名:
   </form>
 </body>

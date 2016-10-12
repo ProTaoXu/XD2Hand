@@ -4,11 +4,11 @@
 <head>
   <meta charset="utf-8">
   <title> XD2HandBookStore</title>
-  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/XD2Hand/css/normalize.css">
   <link href="https://fonts.googleapis.com/css?family=Changa+One" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/css/responsive.css">
+  <link rel="stylesheet" href="/XD2Hand/css/style.css">
+  <link rel="stylesheet" href="/XD2Hand/css/responsive.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
@@ -18,8 +18,8 @@
   </a>
   <div class="login">
     <ul class="login-option">
-      <li><a href="/userManage/loginPage">Login</a></li>
-      <li><a href="/userManage/registerPage">Register</a></li>
+      <li><a href="/XD2Hand/userManage/loginPage">Login</a></li>
+      <li><a href="/XD2Hand/userManage/registerPage">Register</a></li>
     </ul>
   </div>
 
@@ -30,7 +30,7 @@
       <li><a href="#">SHOP</a></li>
       <li><a href="#">FAQ</a></li>
       <li><a href="#">CONTACT</a></li>
-      <li><a href="/userAction/publishBookPage">UPLOADBOOK</a></li>
+      <li><a href="/XD2Hand/userAction/publishBookPage">UPLOADBOOK</a></li>
     </ul>
   </nav>
 </header>
@@ -58,8 +58,8 @@
     <div id="toprate">
       <ul id="best-selling">
         <li>
-          <a href="/images/books_images/9780081001943.jpg">
-            <img src="/images/books_images/9780081001943.jpg" alt="" />
+          <a href="/XD2Hand/images/books_images/9780081001943.jpg">
+            <img src="/XD2Hand/images/books_images/9780081001943.jpg" alt="" />
             <h5>Ageing Skin Care</h5>
             <p><em>ISBN: 0538482389</em></p>
             <P><span>Price: &yen; 125</span></P>
@@ -67,8 +67,8 @@
         </li>
 
         <li>
-          <a href="/images/books_images/9780080999531.jpg">
-            <img src="/images/books_images/9780080999531.jpg" alt="" />
+          <a href="/XD2Hand/images/books_images/9780080999531.jpg">
+            <img src="/XD2Hand/images/books_images/9780080999531.jpg" alt="" />
             <h5>Ageing Skin Care</h5>
             <p><em>ISBN: 0538482389</em></p>
             <P>Price: &yen; 125</P>
@@ -76,8 +76,8 @@
         </li>
 
         <li>
-          <a href="/images/books_images/00796425.jpg">
-            <img src="/images/books_images/00796425.jpg" alt="" />
+          <a href="/XD2Hand/images/books_images/00796425.jpg">
+            <img src="/XD2Hand/images/books_images/00796425.jpg" alt="" />
             <h5>Ageing Skin Care</h5>
             <p><em>ISBN: 0538482389</em></p>
             <P>Price: &yen; 125</P>
@@ -89,8 +89,8 @@
   <section class="center">
     <ul id="gallery">
       <li>
-        <a href="/images/books_images/9780081006603.jpg">
-          <img src="/images/books_images/9780081006603.jpg" alt="" />
+        <a href="/XD2Hand/images/books_images/9780081006603.jpg">
+          <img src="/XD2Hand/images/books_images/9780081006603.jpg" alt="" />
           <h4>
             Ageing Skin Care.
           </h4>
@@ -104,8 +104,8 @@
       </li>
 
       <li>
-        <a href="/images/books_images/9780081009161.jpg">
-          <img src="/images/books_images/9780081009161.jpg" alt="" />
+        <a href="/XD2Hand/images/books_images/9780081009161.jpg">
+          <img src="/XD2Hand/images/books_images/9780081009161.jpg" alt="" />
           <h4>
             Joint Pain.
           </h4>
@@ -119,8 +119,8 @@
       </li>
 
       <li>
-        <a href="/images/books_images/9780124080690.jpg">
-          <img src="/images/books_images/9780124080690.jpg" alt="" />
+        <a href="/XD2Hand/images/books_images/9780124080690.jpg">
+          <img src="/XD2Hand/images/books_images/9780124080690.jpg" alt="" />
           <h4>
             Little Things Do.
           </h4>
@@ -134,8 +134,8 @@
       </li>
 
       <li>
-        <a href="/images/books_images/9780128024218.jpg">
-          <img src="/images/books_images/9780128024218.jpg" alt="" />
+        <a href="/XD2Hand/images/books_images/9780128024218.jpg">
+          <img src="/XD2Hand/images/books_images/9780128024218.jpg" alt="" />
           <h4>
             Can Flaxseed.
           </h4>
@@ -149,8 +149,8 @@
       </li>
 
       <li>
-        <a href="/images/books_images/9780128028339.jpg">
-          <img src="/images/books_images/9780128028339.jpg" alt="" />
+        <a href="/XD2Hand/images/books_images/9780128028339.jpg">
+          <img src="/XD2Hand/images/books_images/9780128028339.jpg" alt="" />
           <h4>
             Ageing Skin Care.
           </h4>
@@ -164,8 +164,8 @@
       </li>
 
       <li>
-        <a href="/images/books_images/9780081003831.jpg">
-          <img src="/images/books_images/9780081003831.jpg" alt="" />
+        <a href="/XD2Hand/images/books_images/9780081003831.jpg">
+          <img src="/XD2Hand/images/books_images/9780081003831.jpg" alt="" />
           <h4>
             5 Tips to Design.
           </h4>
@@ -179,8 +179,8 @@
       </li>
 
       <li>
-        <a href="/images/books_images/09218831.jpg">
-          <img src="/images/books_images/09218831.jpg" alt="" />
+        <a href="/XD2Hand/images/books_images/09218831.jpg">
+          <img src="/XD2Hand/images/books_images/09218831.jpg" alt="" />
           <h4>
             5 Tips to Design.
           </h4>
@@ -194,8 +194,8 @@
       </li>
 
       <li>
-        <a href="/images/books_images/9781785480096.jpg">
-          <img src="/images/books_images/9781785480096.jpg" alt="" />
+        <a href="/XD2Hand/images/books_images/9781785480096.jpg">
+          <img src="/XD2Hand/images/books_images/9781785480096.jpg" alt="" />
           <h4>
             5 Tips to Design.
           </h4>
@@ -209,8 +209,8 @@
       </li>
 
       <li>
-        <a href="/images/books_images/00796425.jpg">
-          <img src="/images/books_images/00796425.jpg" alt="" />
+        <a href="/XD2Hand/images/books_images/00796425.jpg">
+          <img src="/XD2Hand/images/books_images/00796425.jpg" alt="" />
           <h4>
             5 Tips to Design.
           </h4>

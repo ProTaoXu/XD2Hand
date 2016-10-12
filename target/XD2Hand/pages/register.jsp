@@ -30,8 +30,8 @@
     <h1><em>Welcome to  </em>XD2HandBookStore</h1>
   </div>
   <div>
-    <img class="img" src="/images/photo-1424115087662-5845efc6b366.jpg?raw=true" alt="" />
-    <form id="register" action="/userManage/register" method="post">
+    <img class="img" src="/XD2Hand/images/photo-1424115087662-5845efc6b366.jpg?raw=true" alt="" />
+    <form id="register" action="/XD2Hand/userManage/register" method="post">
       <div class="login-form">
         <form:input path="user.name" id="user-name-label" name="userName" type="text" placeholder="Account Name" /><br>
         <form:input  path="user.passwd" id="user-password-label" name="userPasswd" type="password" placeholder="Password" /><br>
