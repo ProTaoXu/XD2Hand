@@ -98,5 +98,8 @@ public class UserManager {
     @RequestMapping("/editInfo")
     public void editInfo(@Validated User user){
         log.info("编辑个人信息");
+        userService.updateInfo(user);
+        return "user/update";
+
     }
 }

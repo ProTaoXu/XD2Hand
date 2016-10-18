@@ -68,5 +68,10 @@ public class UserService {
      * 注册服务
      */
     public void updateInfo(User user){
+        UserStudent userStudent =userStudentRepository.findByStuId(user.getStuId());
+    	userStudent.setName(user.getName());
+    	userStudent.setPasswd(user.getPasswd());
+    	userStudentRepository.save(userStudent);
+
     }
 }
