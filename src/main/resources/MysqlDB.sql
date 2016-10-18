@@ -102,4 +102,10 @@ CREATE TABLE IF NOT EXISTS Order_Detail(
   OrderID varchar(20) not null,
   Book_ID int not null,
   foreign key (OrderID) references Orders(OrderID)
-)
+);
+
+-- 插入一些测试用数据
+USE BookStore;
+INSERT INTO book_isbn VALUES (1,'C++ primer');
+INSERT INTO book_typeinfo VALUES (1,'计算机');
+INSERT INTO user_student VALUES (1,'张洋','luoyu','15529095223','z_y_ang@163.com','0314','','admin');
