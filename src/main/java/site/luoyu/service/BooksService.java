@@ -5,10 +5,13 @@ import org.apache.logging.log4j.Logger;
 /*import org.hibernate.Query;
 import org.hibernate.SessionFactory;*/
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
 
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.repository.RepositoryDefinition;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.FileCopyUtils;
@@ -49,7 +52,7 @@ public class BooksService {
     //日志
     private static final Logger log = LogManager.getLogger(BooksService.class);
 
-    
+
     @Autowired
     BooksRepository booksRepository;
     

@@ -94,12 +94,11 @@ public class UserManager {
     /**
      * 编辑个人信息
      */
-    //todo 编辑个人信息服务 郭旭
     @RequestMapping("/editInfo")
-    public void editInfo(@Validated User user){
+    public String editInfo(@Validated User user){
         log.info("编辑个人信息");
         userService.updateInfo(user);
-        return "user/update";
+        return "MainPage";
 
     }
 }
