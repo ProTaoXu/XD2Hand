@@ -29,12 +29,15 @@ public class UserService {
      *      传入想要登录操作的用户
      */
     //todo 登录操作通过名称来标识，没有处理重名的问题
-    public boolean login(User user){
+    public User login(User user){
         List<UserStudent> userList =  userStudentRepository.findByName(user.getName());
         for (UserStudent one : userList){
-            if (one.getPasswd().equals(user.getPasswd()))return true;
+            if (one.getPasswd().equals(user.getPasswd())){
+                User result = new User(one);
+                return result;
+            }
         }
-        return false;
+        return null;
     }
 
     /**

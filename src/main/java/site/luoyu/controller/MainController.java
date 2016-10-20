@@ -15,9 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 public class MainController {
 
     @RequestMapping()
-    public String homeRedirect(HttpServletResponse response,Model model){
-        User user = new User();
-        model.addAttribute("user",user);
-        return "login";
+    public String homeRedirect(){
+        return "MainPage";
     }
 }

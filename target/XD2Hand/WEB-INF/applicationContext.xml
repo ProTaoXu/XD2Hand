@@ -26,12 +26,6 @@
                transaction-manager-ref="transactionManager">
        </jpa:repositories>
 
-       <!--&lt;!&ndash; dao接口实现的位置 &ndash;&gt;-->
-       <!--<jpa:repositories base-package="site.luoyu.dao"-->
-                         <!--repository-impl-postfix="Impl"-->
-                         <!--entity-manager-factory-ref="entityManagerFactory"-->
-                         <!--transaction-manager-ref="transactionManager" />-->
-
        <!-- 数据库连接参数配置文件的位置 resources MySql.properties -->
        <!--<context:property-placeholder location="classpath:MySql.properties" ignore-unresolvable="true" />-->
        <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">

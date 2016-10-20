@@ -14,7 +14,7 @@
 </head>
 <body>
    <header>
-    <a href="index.html" id="logo">
+    <a href="/userAction/MainPage" id="logo">
       <h1>2HandsBookShoop</h1>
     </a>
     <div class="login">
