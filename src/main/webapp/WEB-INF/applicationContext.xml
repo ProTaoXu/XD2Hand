@@ -15,8 +15,8 @@
        http://www.springframework.org/schema/data/jpa
        http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
-       <!-- Spring 注解bean的位置 -->
-       <context:component-scan base-package="site.luoyu"/>
+       <!-- sql 异常转换 将传统的sql异常转换为-->
+       <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
 
        <!-- jpa repository 这个是需要生成jpa代理(可能是用的cglib)的路径-->
        <jpa:repositories

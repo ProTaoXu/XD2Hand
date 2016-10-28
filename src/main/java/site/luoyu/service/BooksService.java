@@ -35,12 +35,10 @@ import java.util.ArrayList;
 /*import java.util.Iterator;*/
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 /*import javax.annotation.Resource;*/
 import javax.servlet.http.HttpServletRequest;
-
-
-
 
 
 /**
@@ -55,49 +53,25 @@ public class BooksService {
 
     @Autowired
     BooksRepository booksRepository;
-    
-    //jpa分页显示=================================================
+
+    /**
+     * 分页查询
+     * @param pageable
+     * @return
+     */
     @Transactional
     public Page<Books> getBooksByPage(Pageable pageable){
     	Page<Books> page = booksRepository.findAll(pageable);
     	return page;
     }
-    //============================================================
-    		
-    
-    
-/*    @Resource
-    private SessionFactory sessionFactory;
-    
-     * 使用hibernate实现分页查询
-     
-    @SuppressWarnings("unchecked")
-	public List<Books> getBooksByPage(String hql,int offset,int length){
-    	
-    	Pages<Books> pages = new Pages<Books>(); 
-    	
-    	
-    	List<Books> books = null;
-    	
-    	Query query = sessionFactory.getCurrentSession().createQuery(hql);
-    	query.setFirstResult(offset);
-    	query.setMaxResults(length);
-    	books = query.list();
-    	
-    	return books;
-    	
-    }*/
-    
+
    
     public void recommendBooks(){}
-  
 
     /**
      * 二手图书发布
      * @param bookParameter
      *     客户端传过来的图书参数
-     * @param fileMap
-     *      用户上传的图书图片
      * @param user
      *     发布图书人的信息
      */
@@ -126,11 +100,12 @@ public class BooksService {
      *上传图书封面图片 
      */
     public List<String> uploadCover(HttpServletRequest request,User user,Map<String,MultipartFile> fileMap) throws IOException{
-    	  List<String> path = new ArrayList<>();  
-    	  String ctxPath = request.getSession().getServletContext().getRealPath("/")+"uploadImages"+"\\";
-          File file = new File(ctxPath);
+    	  List<String> imageURI = new ArrayList<>();
+          //todo 文件路径最好是可配置的，不然将来使用静态资源服务器去加速静态资源会有麻烦
+    	  String realPath = request.getSession().getServletContext().getRealPath("/")+"uploadImages"+"\\";
+          File file = new File(realPath);
           //将不同用户上传的图片放到不同的目录下，目录名为用户id
-          String userPath = ctxPath + user.getStuId()+"\\";
+          String userPath = realPath + user.getStuId()+"\\";
           File userFile = new File(userPath);
           if(!file.exists()){
         	  file.mkdir();
@@ -138,20 +113,20 @@ public class BooksService {
           if (!userFile.exists()) {
 			  userFile.mkdir();
           }
-          String fileName = null;
+          String bookImageURI = null;
           for(Map.Entry<String, MultipartFile> entity : fileMap.entrySet()){
-        	  //获得上传文件名
         	  MultipartFile mf = entity.getValue();
-        	  fileName = mf.getOriginalFilename();
-        	  
-        	  String filePath = userPath + "_" + System.currentTimeMillis() + fileName;
+        	  bookImageURI = UUID.randomUUID().toString();
+        	  String filePath = userPath + bookImageURI;
+              //拼写上传图片在web服务器下的路径
+              bookImageURI = "/uploadImages/"+user.getStuId()+"/"+bookImageURI;
         	  File uploadFile = new File(filePath);
-        	  FileCopyUtils.copy(mf.getBytes(), uploadFile);
-        	  System.out.println("success");  
-        	  path.add(filePath);
+              mf.transferTo(uploadFile);
+        	  //FileCopyUtils.copy(mf.getBytes(), uploadFile);
+        	  imageURI.add(bookImageURI);
         	
           }
-         return path; 
+         return imageURI;
     }
 
 	public Iterable<Books> findBySort(Sort sort) {

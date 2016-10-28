@@ -1,32 +1,25 @@
+package site.luoyu;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
+import org.springframework.transaction.annotation.Transactional;
 import site.luoyu.dao.Books;
 import site.luoyu.dao.BooksRepository;
 import site.luoyu.model.User;
 
 import java.sql.Date;
+import java.util.Iterator;
 
 
 /**
  * Created by xd on 2016/9/17.
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@WebAppConfiguration
-//@ContextConfiguration("classpath:")
-public class testJPA {
+public class JPAtest extends SpringContext {
 
-    private static final Logger log = LogManager.getLogger(testJPA.class);
+    private static final Logger log = LogManager.getLogger(JPAtest.class);
 
-    //todo 哈哈，一个bug component scan与 repository冲突，会提示无法找到正确的bean，其实都是一个
-//    用qualifier 能解决这个问题，但是不知道这么干会不会禁止了jpa的动态代理特性
-    @Qualifier("booksRepository")
     @Autowired
     private BooksRepository booksRepository;
 
@@ -34,6 +27,7 @@ public class testJPA {
     User user;
 
     @Test
+    @Transactional
     public void testBooks(){
         user.setName("rightConfig");
         log.info(user.getName());
@@ -46,6 +40,11 @@ public class testJPA {
         aBook.setRecommendStar(5);
         aBook.setTypeCodeClass("031114班");
         booksRepository.save(aBook);
-        log.info(booksRepository.findAll());
+        Iterable<Books> BookList = booksRepository.findAll();
+        Iterator<Books> iterator = BookList.iterator();
+        while (iterator.hasNext()){
+            Books doneBook = iterator.next();
+            log.info("已发布图书名称："+doneBook.getName());
+        }
     }
 }

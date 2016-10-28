@@ -15,10 +15,10 @@
        http://www.springframework.org/schema/data/jpa
        http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
-       <!-- Spring 注解bean的位置 -->
-       <context:component-scan base-package="site.luoyu"/>
+       <!-- sql 异常转换 将传统的sql异常转换为-->
+       <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
 
-       <!-- jpa repository 的路径-->
+       <!-- jpa repository 这个是需要生成jpa代理(可能是用的cglib)的路径-->
        <jpa:repositories
                base-package="site.luoyu.dao"
                repository-impl-postfix="Repository"
@@ -39,7 +39,7 @@
 
        <!-- service包 -->
        <!--<context:component-scan base-package="your service package" />-->
-       <!-- 使用cglib进行动态代理 我对cglib用的也不多，不知道这个是个啥-->
+       <!-- 使用cglib进行动态代理 hibernate 利用cglib进行动态代理的生成。延缓数据访问 -->
        <aop:aspectj-autoproxy proxy-target-class="true" />
        <!-- 支持注解方式声明式事务 -->
        <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" />

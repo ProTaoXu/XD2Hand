@@ -61,7 +61,7 @@ public class UserManager {
     public String register(@Validated User user,Model model){
         log.info("确认注册");
         model.addAttribute("user",user);
-        if(userService.register(user))return "MainPage";
+        if(userService.register(user))return "redirect:/userAction/MainPage";
         else return "register";
     }
 
@@ -98,7 +98,7 @@ public class UserManager {
     public String editInfo(@Validated User user){
         log.info("编辑个人信息");
         userService.updateInfo(user);
-        return "MainPage";
+        return "redirect:/userAction/MainPage";
 
     }
 }
