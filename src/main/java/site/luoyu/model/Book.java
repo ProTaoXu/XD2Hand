@@ -12,7 +12,7 @@ import java.sql.Date;
 public class Book {
     private int bookId;
     private Integer stuId;
-    private String isbn;
+    private long isbn_id;
     private String pictures;
     private Integer level;
     //todo 推荐等级，这个可以让服务器在每晚12点求得最新值
@@ -33,7 +33,7 @@ public class Book {
     public Book(Books book){
         this.bookId = book.getBookId();
         this.stuId = book.getStuId();
-        this.isbn = book.getIsbn();
+        this.isbn_id = book.getIsbn();
         this.pictures = book.getPictures();
         this.level = book.getLevel();
         this.recommendStar = book.getRecommendStar();
@@ -45,12 +45,12 @@ public class Book {
     }
 
 
-    public String getIsbn() {
-        return isbn;
+    public long getIsbn() {
+        return isbn_id;
     }
 
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
+    public void setIsbn(long isbn) {
+        this.isbn_id = isbn;
     }
 
     public String getPictures() {

@@ -3,7 +3,7 @@ package site.luoyu.dao;
 import javax.persistence.*;
 
 /**
- * Created by xd on 2016/9/26.
+ * Created by xd on 2016/11/1.
  */
 @Entity
 @Table(name = "book_typeinfo", schema = "", catalog = "bookstore")

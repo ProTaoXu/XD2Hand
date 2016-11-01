@@ -4,14 +4,14 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by xd on 2016/9/26.
+ * Created by xd on 2016/11/1.
  */
 @Entity
 @Table(name = "book_comment", schema = "", catalog = "bookstore")
 public class BookComment {
     private int cId;
     private Integer stuId;
-    private String isbn;
+    private Long isbn;
     private String content;
     private Timestamp commentdate;
 
@@ -37,11 +37,11 @@ public class BookComment {
 
     @Basic
     @Column(name = "isbn")
-    public String getIsbn() {
+    public Long getIsbn() {
         return isbn;
     }
 
-    public void setIsbn(String isbn) {
+    public void setIsbn(Long isbn) {
         this.isbn = isbn;
     }
 

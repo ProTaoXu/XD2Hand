@@ -1,10 +1,9 @@
 package site.luoyu.dao;
 
 import javax.persistence.*;
-import java.util.Arrays;
 
 /**
- * Created by xd on 2016/9/26.
+ * Created by xd on 2016/11/1.
  */
 @Entity
 @Table(name = "user_student", schema = "", catalog = "bookstore")
@@ -14,8 +13,9 @@ public class UserStudent {
     private String nickname;
     private String phoneNumber;
     private String email;
-    private String classes;
-    private byte[] portrait;
+    private Integer communityId;
+    private Integer classes;
+    private String portrait;
     private String passwd;
 
     @Id
@@ -69,22 +69,32 @@ public class UserStudent {
     }
 
     @Basic
+    @Column(name = "Community_id")
+    public Integer getCommunityId() {
+        return communityId;
+    }
+
+    public void setCommunityId(Integer communityId) {
+        this.communityId = communityId;
+    }
+
+    @Basic
     @Column(name = "classes")
-    public String getClasses() {
+    public Integer getClasses() {
         return classes;
     }
 
-    public void setClasses(String classes) {
+    public void setClasses(Integer classes) {
         this.classes = classes;
     }
 
     @Basic
     @Column(name = "portrait")
-    public byte[] getPortrait() {
+    public String getPortrait() {
         return portrait;
     }
 
-    public void setPortrait(byte[] portrait) {
+    public void setPortrait(String portrait) {
         this.portrait = portrait;
     }
 
@@ -107,12 +117,13 @@ public class UserStudent {
 
         if (stuId != that.stuId) return false;
         if (classes != null ? !classes.equals(that.classes) : that.classes != null) return false;
+        if (communityId != null ? !communityId.equals(that.communityId) : that.communityId != null) return false;
         if (email != null ? !email.equals(that.email) : that.email != null) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
         if (nickname != null ? !nickname.equals(that.nickname) : that.nickname != null) return false;
         if (passwd != null ? !passwd.equals(that.passwd) : that.passwd != null) return false;
         if (phoneNumber != null ? !phoneNumber.equals(that.phoneNumber) : that.phoneNumber != null) return false;
-        if (!Arrays.equals(portrait, that.portrait)) return false;
+        if (portrait != null ? !portrait.equals(that.portrait) : that.portrait != null) return false;
 
         return true;
     }
@@ -124,8 +135,9 @@ public class UserStudent {
         result = 31 * result + (nickname != null ? nickname.hashCode() : 0);
         result = 31 * result + (phoneNumber != null ? phoneNumber.hashCode() : 0);
         result = 31 * result + (email != null ? email.hashCode() : 0);
+        result = 31 * result + (communityId != null ? communityId.hashCode() : 0);
         result = 31 * result + (classes != null ? classes.hashCode() : 0);
-        result = 31 * result + (portrait != null ? Arrays.hashCode(portrait) : 0);
+        result = 31 * result + (portrait != null ? portrait.hashCode() : 0);
         result = 31 * result + (passwd != null ? passwd.hashCode() : 0);
         return result;
     }

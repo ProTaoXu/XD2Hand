@@ -6,7 +6,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import site.luoyu.dao.Books;
-import site.luoyu.dao.BooksRepository;
+import site.luoyu.dao.Repository.BooksRepository;
 import site.luoyu.model.User;
 
 import java.sql.Date;

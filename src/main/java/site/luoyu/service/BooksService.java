@@ -5,23 +5,19 @@ import org.apache.logging.log4j.Logger;
 /*import org.hibernate.Query;
 import org.hibernate.SessionFactory;*/
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
 
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.repository.RepositoryDefinition;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.FileCopyUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 
-
-
+import site.luoyu.dao.BookIsbn;
 import site.luoyu.dao.Books;
-import site.luoyu.dao.BooksRepository;
+import site.luoyu.dao.Repository.BookIsbnRepository;
+import site.luoyu.dao.Repository.BooksRepository;
 /*import site.luoyu.dao.Pages;*/
 
 
@@ -54,6 +50,9 @@ public class BooksService {
     @Autowired
     BooksRepository booksRepository;
 
+    @Autowired
+    BookIsbnRepository bookIsbnRepository;
+
     /**
      * 分页查询
      * @param pageable
@@ -84,7 +83,10 @@ public class BooksService {
         // id 自增
 //        book.setBookId(UUID.randomUUID().);
         aBook.setName(((String[]) bookParameter.get("name"))[0]);
-        aBook.setIsbn(((String[]) bookParameter.get("isbn"))[0]);
+        //todo 这里需要先先查到一个isbn，然后再添加,但是到底查isbn10 还是13 不确定
+        //todo 而且前端一旦传入的isbn无效，就会产生nullpointerException 这是不合理的，价格也存在这样的问题。
+        BookIsbn isbn = bookIsbnRepository.findByIsbn13(((String[]) bookParameter.get("isbn"))[0]);
+        aBook.setIsbn(isbn.getIsbnId());
         aBook.setLevel(Integer.parseInt(((String[]) bookParameter.get("level"))[0]));
         aBook.setPrice(Float.parseFloat(((String[]) bookParameter.get("price"))[0]));
         //todo 临时设置成1 我们需要开发后台的管理页面，动态的是实现前面用户选的类型可增改。这个类型最好也是从isbn上获得

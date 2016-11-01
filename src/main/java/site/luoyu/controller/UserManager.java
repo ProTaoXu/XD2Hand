@@ -78,8 +78,8 @@ public class UserManager {
             session.setAttribute("user",loginUser);
             return "redirect:/userAction/MainPage";
         }else {
-            model.addAttribute("message","用户登录失败");
-            return "redirect:/";
+            model.addAttribute("message","登录失败！用户名或密码错误");
+            return "login";
         }
     }
 

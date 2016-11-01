@@ -1,9 +1,9 @@
-package site.luoyu.dao;
+package site.luoyu.dao.Repository;
 
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
-import org.springframework.stereotype.Repository;
+import site.luoyu.dao.Books;
 
 
 import java.util.List;
