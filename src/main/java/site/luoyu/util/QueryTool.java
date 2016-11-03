@@ -5,21 +5,19 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 
-
-
 /**
- *Ñ¡ÔñÅÅĞòÊÖ¶Î
+ *é€‰æ‹©æ’åºæ‰‹æ®µ
  */
 public final class QueryTool {
-	 //jpa²éÑ¯
+	 //jpaæŸ¥è¯¢
 	public static Pageable buildPageRequest(int pageNumber,int pageSize,String sortType){
 		Sort sort = null;
 		if("bookid".equals(sortType)){
-			sort = new Sort(Direction.DESC, "bookid");//Ä¬ÈÏÅÅĞò
+			sort = new Sort(Direction.DESC, "bookid");//é»˜è®¤æ’åº
 		}else if("price".equals(sortType)){
-			sort = new Sort(Direction.DESC, "price");//°´¼Û¸ñÅÅĞò
+			sort = new Sort(Direction.DESC, "price");//æŒ‰ä»·æ ¼æ’åº
 		}else {
-			sort = new Sort(Direction.DESC, "recommendStar");//°´ĞÇ¼¶ÅÅĞò
+			sort = new Sort(Direction.DESC, "recommendStar");//æŒ‰æ˜Ÿçº§æ’åº
 		}
 		return new PageRequest(pageNumber, pageSize, sort);
 	}

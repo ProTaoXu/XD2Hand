@@ -1,25 +1,24 @@
+package site.luoyu;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.web.WebAppConfiguration;
+import org.springframework.transaction.annotation.Transactional;
 import site.luoyu.dao.Books;
-import site.luoyu.dao.BooksRepository;
+import site.luoyu.dao.Repository.BooksRepository;
 import site.luoyu.model.User;
 
 import java.sql.Date;
+import java.util.Iterator;
 
 
 /**
  * Created by xd on 2016/9/17.
  */
-//@RunWith(SpringJUnit4ClassRunner.class)
-@WebAppConfiguration
-//@ContextConfiguration("classpath:")
-public class testJPA {
+public class JPAtest extends SpringContext {
 
-    private static final Logger log = LogManager.getLogger(testJPA.class);
+    private static final Logger log = LogManager.getLogger(JPAtest.class);
 
     @Autowired
     private BooksRepository booksRepository;
@@ -28,6 +27,7 @@ public class testJPA {
     User user;
 
     @Test
+    @Transactional
     public void testBooks(){
         user.setName("rightConfig");
         log.info(user.getName());
@@ -40,6 +40,11 @@ public class testJPA {
         aBook.setRecommendStar(5);
         aBook.setTypeCodeClass("031114班");
         booksRepository.save(aBook);
-        log.info(booksRepository.findAll());
+        Iterable<Books> BookList = booksRepository.findAll();
+        Iterator<Books> iterator = BookList.iterator();
+        while (iterator.hasNext()){
+            Books doneBook = iterator.next();
+            log.info("已发布图书名称："+doneBook.getName());
+        }
     }
 }

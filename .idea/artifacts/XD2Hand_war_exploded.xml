@@ -65,7 +65,7 @@
         </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/target/XD2Hand/META-INF/MANIFEST.MF" />
+        <element id="file-copy" path="H:\MyProject\XD2Hand\target/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="XD2Hand/web/Web" />
     </root>

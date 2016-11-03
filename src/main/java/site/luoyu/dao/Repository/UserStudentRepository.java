@@ -1,6 +1,7 @@
-package site.luoyu.dao;
+package site.luoyu.dao.Repository;
 
 import org.springframework.data.repository.CrudRepository;
+import site.luoyu.dao.UserStudent;
 
 import java.util.List;
 

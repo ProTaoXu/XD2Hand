@@ -12,7 +12,3 @@
 - 主页面（2）
 ![](https://github.com/XDCreater/ReadmeImage/raw/master/XD2Hand/Main%20Page%20(1).jpg)
 
-
-### 目前还需要做的事情
-
-1. 需要将班级单独提取出来，作为一个表。

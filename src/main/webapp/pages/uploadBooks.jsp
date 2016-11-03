@@ -75,7 +75,7 @@
         </div>
 
       </div>
-      <h6 color="red" > <div>这里我有个想法，传一本书就要写这么多信息是不现实的，我们需要尽量减少用户写的信息。我们可以利用isbn到书籍的相关信息，然后自动完成大部分表单</div></h6>
+      <h6 color="red" ></h6>
       <form  action="/userAction/publishBook" method="post" enctype="multipart/form-data">
         <div >
           <table>
@@ -89,7 +89,7 @@
               <td>ISBN 这个应该是必填(necessary)</td>
             </tr>
             <tr>
-              <td><input name="isbn" type="text" /></td>
+              <td><input name="isbn" type="text" placeholder="9787115145543" /></td>
             </tr>
             <tr>
               <td>Title of Book</td>

@@ -61,7 +61,7 @@ public class UserManager {
     public String register(@Validated User user,Model model){
         log.info("确认注册");
         model.addAttribute("user",user);
-        if(userService.register(user))return "MainPage";
+        if(userService.register(user))return "redirect:/userAction/MainPage";
         else return "register";
     }
 
@@ -78,8 +78,8 @@ public class UserManager {
             session.setAttribute("user",loginUser);
             return "redirect:/userAction/MainPage";
         }else {
-            model.addAttribute("message","用户登录失败");
-            return "redirect:/";
+            model.addAttribute("message","登录失败！用户名或密码错误");
+            return "login";
         }
     }
 
@@ -94,12 +94,11 @@ public class UserManager {
     /**
      * 编辑个人信息
      */
-    //todo 编辑个人信息服务 郭旭
     @RequestMapping("/editInfo")
-    public void editInfo(@Validated User user){
+    public String editInfo(@Validated User user){
         log.info("编辑个人信息");
         userService.updateInfo(user);
-        return "user/update";
+        return "redirect:/userAction/MainPage";
 
     }
 }

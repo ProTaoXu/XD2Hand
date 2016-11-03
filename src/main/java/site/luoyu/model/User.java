@@ -16,8 +16,8 @@ public class User {
     private String nickname;
     private String phoneNumber;
     private String email;
-    private String classes;
-    private byte[] portrait;
+    private int classes_id;
+    private String portrait;
     private String passwd;
 
     //无参构造函数
@@ -35,7 +35,7 @@ public class User {
         this.nickname = stu.getNickname();
         this.phoneNumber = stu.getPhoneNumber();
         this.email = stu.getEmail();
-        this.classes = stu.getClasses();
+        this.classes_id = stu.getClasses();
         this.portrait = stu.getPortrait();
         this.passwd = stu.getPasswd();
     }
@@ -72,19 +72,19 @@ public class User {
         this.email = email;
     }
 
-    public String getClasses() {
-        return classes;
+    public int getClasses() {
+        return classes_id;
     }
 
-    public void setClasses(String classes) {
-        this.classes = classes;
+    public void setClasses(int classes) {
+        this.classes_id = classes;
     }
 
-    public byte[] getPortrait() {
+    public String getPortrait() {
         return portrait;
     }
 
-    public void setPortrait(byte[] portrait) {
+    public void setPortrait(String portrait) {
         this.portrait = portrait;
     }
 

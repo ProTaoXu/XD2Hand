@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context"
        xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
        <!-- Convenient way to map URLs to JSPs w/o having a Controller -->
        <!--<mvc:view-controller path="/admin/activeUsers" view-name="admin/activeUsers"/>-->
        <!--<mvc:view-controller path="/home" view-name="home"/>-->
 
+       <!-- Spring 注解bean的位置 -->
+       <context:component-scan base-package="site.luoyu"/>
+
        <!-- 默认的注解映射的支持 不加这个mvc resource注解会失败 -->
        <mvc:annotation-driven />
-
-       <!-- component 注解扫描路径 -->
-       <context:component-scan base-package="site.luoyu"/>
        
        <mvc:resources mapping="/images/**" location="/images/"/>
+       <mvc:resources mapping="/uploadImages/**" location="/uploadImages/" />
        <mvc:resources mapping="/js/**.js" location="/js/"/>
        <mvc:resources mapping="/css/**.css" location="/css/"/>
        <mvc:resources mapping="/fonts/**" location="/fonts/"/>

@@ -7,13 +7,13 @@ import javax.persistence.Id;
 import java.sql.Date;
 
 /**
- * Created by xd on 2016/9/26.
+ * Created by xd on 2016/11/1.
  */
 @Entity
 public class Books {
     private int bookId;
     private Integer stuId;
-    private String isbn;
+    private Long isbn;
     private String pictures;
     private Integer level;
     private Integer recommendStar;
@@ -45,11 +45,11 @@ public class Books {
 
     @Basic
     @Column(name = "isbn")
-    public String getIsbn() {
+    public Long getIsbn() {
         return isbn;
     }
 
-    public void setIsbn(String isbn) {
+    public void setIsbn(Long isbn) {
         this.isbn = isbn;
     }
 

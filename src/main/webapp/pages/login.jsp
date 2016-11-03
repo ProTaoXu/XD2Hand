@@ -30,7 +30,8 @@
                 <input type="checkbox" />
                 Remember Me</label><br><br>
             <input type="button" onclick="$('#loginForm').submit()" value="Login" class="login-button" />
-            <input type="button" onclick="window.location.href='userManage/registerPage'" value="Sign in" class="login-button" />
+            <input type="button" onclick="window.location.href='/userManage/registerPage'" value="Sign in" class="login-button" />
+            <a>${message}</a>
             <br>
             <h6 class="no-access">Can't access your account?</h6>
         </div>

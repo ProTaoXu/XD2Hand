@@ -1,4 +1,6 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="utf-8" %>
+<%@ page import="java.util.*" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="utf-8"  isELIgnored="false" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -88,140 +90,23 @@
   </aside>
   <section class="center">
     <ul id="gallery">
-      <li>
-        <a href="/images/books_images/9780081006603.jpg">
-          <img src="/images/books_images/9780081006603.jpg" alt="" />
-          <h4>
-            Ageing Skin Care.
-          </h4>
-          <p>
-            <em>ISBM: 0538482389</em>
-          </p>
-          <p style="color:red;">
-            Price: &yen;89
-          </p>
-        </a>
-      </li>
-
-      <li>
-        <a href="/images/books_images/9780081009161.jpg">
-          <img src="/images/books_images/9780081009161.jpg" alt="" />
-          <h4>
-            Joint Pain.
-          </h4>
-          <p>
-            <em>ISBM: 0538482389</em>
-          </p>
-          <p style="color:red;">
-            Price: &yen;125
-          </p>
-        </a>
-      </li>
-
-      <li>
-        <a href="/images/books_images/9780124080690.jpg">
-          <img src="/images/books_images/9780124080690.jpg" alt="" />
-          <h4>
-            Little Things Do.
-          </h4>
-          <p>
-            <em>ISBM: 0538482389</em>
-          </p>
-          <p style="color:red;">
-            Price: &yen;200
-          </p>
-        </a>
-      </li>
-
-      <li>
-        <a href="/images/books_images/9780128024218.jpg">
-          <img src="/images/books_images/9780128024218.jpg" alt="" />
-          <h4>
-            Can Flaxseed.
-          </h4>
-          <p>
-            <em>ISBM: 0538482389</em>
-          </p>
-          <p style="color:red;">
-            Price: &yen;350
-          </p>
-        </a>
-      </li>
-
-      <li>
-        <a href="/images/books_images/9780128028339.jpg">
-          <img src="/images/books_images/9780128028339.jpg" alt="" />
-          <h4>
-            Ageing Skin Care.
-          </h4>
-          <p>
-            <em>ISBM: 0538482389</em>
-          </p>
-          <p style="color:red;">
-            Price: &yen;350
-          </p>
-        </a>
-      </li>
-
-      <li>
-        <a href="/images/books_images/9780081003831.jpg">
-          <img src="/images/books_images/9780081003831.jpg" alt="" />
-          <h4>
-            5 Tips to Design.
-          </h4>
-          <p>
-            <em>ISBM: 0538482389</em>
-          </p>
-          <p style="color:red;">
-            Price: &yen;350
-          </p>
-        </a>
-      </li>
-
-      <li>
-        <a href="/images/books_images/09218831.jpg">
-          <img src="/images/books_images/09218831.jpg" alt="" />
-          <h4>
-            5 Tips to Design.
-          </h4>
-          <p>
-            <em>ISBM: 0538482389</em>
-          </p>
-          <p style="color:red;">
-            Price: &yen;350
-          </p>
-        </a>
-      </li>
-
-      <li>
-        <a href="/images/books_images/9781785480096.jpg">
-          <img src="/images/books_images/9781785480096.jpg" alt="" />
-          <h4>
-            5 Tips to Design.
-          </h4>
-          <p>
-            <em>ISBM: 0538482389</em>
-          </p>
-          <p style="color:red;">
-            Price: &yen;350
-          </p>
-        </a>
-      </li>
-
-      <li>
-        <a href="/images/books_images/00796425.jpg">
-          <img src="/images/books_images/00796425.jpg" alt="" />
-          <h4>
-            5 Tips to Design.
-          </h4>
-          <p>
-            <em>ISBM: 0538482389</em>
-          </p>
-          <p style="color:red;">
-            Price: &yen;350
-          </p>
-        </a>
-      </li>
+      <c:forEach items="${pages}" var="book">
+        <li>
+          <a href="/images/books_images/9780081006603.jpg">
+            <img src="${book.pictures}" alt="" />
+            <h4>
+              <a href="/userAction/MainPage/${book.name}"></a>
+              ${book.name}
+            </h4>
+            <p>
+              <em>ISBN: ${book.isbn}</em>
+            </p>
+            <p style="color:red;">
+              Price: &yen;${book.price}
+            </p>
+          </a>
+        </li>
+      </c:forEach>
     </ul>
   </section>
 </div>
